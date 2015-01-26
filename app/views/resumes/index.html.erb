@@ -1,0 +1,32 @@
+Simple application i put together to load download and display file such as docx.
+<% if !flash[:notice].blank? %>
+  <div class="alert alert-info">
+  <%= flash[:notice] %>
+  </div>
+<% end %>
+<br />
+<%= link_to "New Document", new_resume_path, class: "btn btn-primary" %>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Download Link</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resumes.each do |resume| %>
+      <tr>
+        <td><%= resume.name %></td>
+        <td><%= link_to "Download Document", resume.attachment_url %></td>
+<!--         <td><%= link_to 'Show', resume %></td>
+ -->        <td><%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+Demo i've worked on in the backend, basiclly i imported the example you sent to me then load and store it in the database as you can see here.
+<%= link_to 'Wellography Element Example', demos_path%>
